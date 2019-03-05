@@ -27,7 +27,7 @@ class TestCaseTest(TestCase):
 
 
 if __name__ == "__main__":
-    TestCaseTest("test_template_method").run()
-    TestCaseTest("test_result").run()
-    TestCaseTest("test_failed_result").run()
-    TestCaseTest("test_failed_result_formatting").run()
+    print(TestCaseTest("test_template_method").run().summary())
+    print(TestCaseTest("test_result").run().summary())
+    print(TestCaseTest("test_failed_result").run().summary())
+    print(TestCaseTest("test_failed_result_formatting").run().summary())
