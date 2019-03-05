@@ -2,10 +2,14 @@ class TestCase:
     def __init__(self, name):
         self.name = name
 
+    def setup(self):
+        pass
+
     def run(self):
         self.setup()
         method = getattr(self, self.name)
         method()
-
-    def setup(self):
+        self.tear_down()
+    
+    def tear_down(self):
         pass
