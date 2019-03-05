@@ -9,3 +9,5 @@ class WasRun(TestCase):
     def testMethod(self):
         self.was_run = 1
 
+    def setup(self):
+        self.was_setup = 1
