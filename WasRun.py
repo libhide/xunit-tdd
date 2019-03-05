@@ -1,4 +1,7 @@
-class WasRun:
+from TestCase import TestCase
+
+
+class WasRun(TestCase):
     def __init__(self, name):
         self.was_run = None
         self.name = name
