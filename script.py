@@ -5,33 +5,35 @@ from TestSuite import TestSuite
 
 
 class TestCaseTest(TestCase):
+    def setup(self):
+        self.result = TestResult()
+
     def test_template_method(self):
         self.test = WasRun("test_method")
-        self.test.run()
+        self.test.run(self.result)
         assert("setup test_method tear_down " == self.test.log)
 
     def test_result(self):
         self.test = WasRun("test_method")
-        result = self.test.run()
-        assert("1 run, 0 failed" == result.summary())
+        result = self.test.run(self.result)
+        assert("1 run, 0 failed" == self.result.summary())
 
     def test_failed_result(self):
         self.test = WasRun("test_broken_method")
-        result = self.test.run()
-        assert("1 run, 1 failed" == result.summary())
+        result = self.test.run(self.result)
+        assert("1 run, 1 failed" == self.result.summary())
 
     def test_failed_result_formatting(self):
-        result = TestResult()
-        result.test_started()
-        result.test_failed()
-        assert("1 run, 1 failed" == result.summary())
+        self.result.test_started()
+        self.result.test_failed()
+        assert("1 run, 1 failed" == self.result.summary())
 
     def test_suite(self):
         suite = TestSuite()
         suite.add(WasRun("test_method"))
         suite.add(WasRun("test_broken_method"))
-        suite.run(result)
-        assert("2 run, 1 failed" == result.summary())
+        suite.run(self.result)
+        assert("2 run, 1 failed" == self.result.summary())
 
 
 if __name__ == "__main__":
