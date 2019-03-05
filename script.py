@@ -1,5 +1,4 @@
-def main():
-    print("Hello World!")
-
-if __name__ == "__main__":
-    main()
+test = WasRun("testMethod")
+print(test.was_run)
+test.testMethod()
+print(test.was_run)
