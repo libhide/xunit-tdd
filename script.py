@@ -9,5 +9,12 @@ class TestCaseTest(TestCase):
         test.run()
         assert(test.was_run)
 
+    def test_setup(self):
+        test = WasRun("testMethod")
+        test.run()
+        assert(test.was_setup)
+
+
 if __name__ == "__main__":
     TestCaseTest("testRunning").run()
+    TestCaseTest("test_setup").run()
