@@ -9,6 +9,3 @@ class WasRun(TestCase):
     def testMethod(self):
         self.was_run = 1
 
-    def run(self):
-        method = getattr(self, self.name)
-        method()
