@@ -12,7 +12,7 @@ class TestCaseTest(TestCase):
 
     def test_setup(self):
         self.test.run()
-        assert(self.test.was_setup)
+        assert("setup " == self.test.log)
 
 
 if __name__ == "__main__":
