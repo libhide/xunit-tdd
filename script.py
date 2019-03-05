@@ -1,6 +1,7 @@
 from TestCase import TestCase
 from WasRun import WasRun
 from TestResult import TestResult
+from TestSuite import TestSuite
 
 
 class TestCaseTest(TestCase):
@@ -29,13 +30,17 @@ class TestCaseTest(TestCase):
         suite = TestSuite()
         suite.add(WasRun("test_method"))
         suite.add(WasRun("test_broken_method"))
-        result = suite.run()
+        suite.run(result)
         assert("2 run, 1 failed" == result.summary())
 
 
 if __name__ == "__main__":
-    print(TestCaseTest("test_template_method").run().summary())
-    print(TestCaseTest("test_result").run().summary())
-    print(TestCaseTest("test_failed_result").run().summary())
-    print(TestCaseTest("test_failed_result_formatting").run().summary())
-    print(TestCaseTest("test_suite").run().summary())
+    suite = TestSuite()
+    suite.add(TestCaseTest("test_template_method"))
+    suite.add(TestCaseTest("test_result"))
+    suite.add(TestCaseTest("test_failed_result"))
+    suite.add(TestCaseTest("test_failed_result_formatting"))
+    suite.add(TestCaseTest("test_suite"))
+    result = TestResult()
+    suite.run(result)
+    print(result.summary())
