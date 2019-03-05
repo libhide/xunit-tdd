@@ -6,7 +6,7 @@ class TestCaseTest(TestCase):
     def test_template_method(self):
         self.test = WasRun("test_method")
         self.test.run()
-        assert("setup test_method " == self.test.log)
+        assert("setup test_method tear_down " == self.test.log)
 
 
 if __name__ == "__main__":
