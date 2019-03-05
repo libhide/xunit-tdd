@@ -4,9 +4,9 @@ from WasRun import WasRun
 
 class TestCaseTest(TestCase):
     def setup(self):
-        self.test = WasRun("testMethod")
+        self.test = WasRun("test_method")
 
-    def testRunning(self):
+    def test_running(self):
         self.test.run()
         assert(self.test.was_run)
 
@@ -16,5 +16,5 @@ class TestCaseTest(TestCase):
 
 
 if __name__ == "__main__":
-    TestCaseTest("testRunning").run()
+    TestCaseTest("test_running").run()
     TestCaseTest("test_setup").run()
