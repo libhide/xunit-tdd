@@ -8,3 +8,4 @@ class WasRun(TestCase):
 
     def test_method(self):
         self.was_run = 1
+        self.log += "test_method "
