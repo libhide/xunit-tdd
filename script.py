@@ -3,15 +3,16 @@ from WasRun import WasRun
 
 
 class TestCaseTest(TestCase):
+    def setup(self):
+        self.test = WasRun("testMethod")
+
     def testRunning(self):
-        test = WasRun("testMethod")
-        test.run()
-        assert(test.was_run)
+        self.test.run()
+        assert(self.test.was_run)
 
     def test_setup(self):
-        test = WasRun("testMethod")
-        test.run()
-        assert(test.was_setup)
+        self.test.run()
+        assert(self.test.was_setup)
 
 
 if __name__ == "__main__":
