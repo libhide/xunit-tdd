@@ -15,18 +15,23 @@ class TestCaseTest(TestCase):
 
     def test_result(self):
         self.test = WasRun("test_method")
-        result = self.test.run(self.result)
+        self.test.run(self.result)
         assert("1 run, 0 failed" == self.result.summary())
 
     def test_failed_result(self):
         self.test = WasRun("test_broken_method")
-        result = self.test.run(self.result)
+        self.test.run(self.result)
         assert("1 run, 1 failed" == self.result.summary())
 
     def test_failed_result_formatting(self):
         self.result.test_started()
         self.result.test_failed()
         assert("1 run, 1 failed" == self.result.summary())
+
+    def test_if_tear_down_runs_regardless(self):
+        self.test = WasRun("test_broken_method")
+        self.test.run(self.result)
+        assert("setup tear_down " == self.test.log)
 
     def test_suite(self):
         suite = TestSuite()
@@ -42,6 +47,7 @@ if __name__ == "__main__":
     suite.add(TestCaseTest("test_result"))
     suite.add(TestCaseTest("test_failed_result"))
     suite.add(TestCaseTest("test_failed_result_formatting"))
+    suite.add(TestCaseTest("test_if_tear_down_runs_regardless"))
     suite.add(TestCaseTest("test_suite"))
     result = TestResult()
     suite.run(result)
